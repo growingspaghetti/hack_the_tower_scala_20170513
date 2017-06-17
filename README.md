@@ -115,3 +115,22 @@ DESCRIPTION
 
        The two expressions are mandatory arguments.
 ```
+
+```
+    e = 2.7182818284 :: Float
+    k = v :: t
+```
+is equivalent to scala's
+```
+val e: Double = 2.7182818284
+
+*println(e)
+e: Double = 2.7182818284
+2.7182818284
+```
+
+Definition of HashMap is
+```
+$:t HashMap
+HashMap :: * -> * -> *
+```
