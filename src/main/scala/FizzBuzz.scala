@@ -3,7 +3,7 @@
   */
 object FizzBuzz {
 
-  def getResult(number: Int) = {
+  def getResult(number: Int): String = {
     var result = ""
     if (number % 3 == 0) result = "fizjjz"
     if (number % 5 == 0) result += "buzz"
