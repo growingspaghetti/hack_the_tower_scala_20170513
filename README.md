@@ -134,3 +134,73 @@ Definition of HashMap is
 $:t HashMap
 HashMap :: * -> * -> *
 ```
+
+Install Haskell Interpreter
+---------------------------
+Synaptic > Haskell > STACK
+
+```
+ryoji@ubuntu:~$ ghci
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+Prelude> 1 * 2
+2
+Prelude> :t 1
+1 :: Num a => a
+Prelude> :t return 1
+return 1 :: (Monad m, Num a) => m a
+```
+
+https://downloads.haskell.org/~ghc/7.8.4/docs/html/users_guide/interactive-evaluation.html
+```
+Prelude> x <- return 42
+Prelude> print x
+42
+Prelude> :t x
+x :: Integer
+```
+is equivalent to Bash's
+```
+print `return 42`
+```
+
+https://stackoverflow.com/questions/5417623/ghci-not-in-scope-message
+http://learnyouahaskell.com/syntax-in-functions
+
+module
+```
+bmi :: Floating a => a -> a -> a
+bmi weight height = weight / height ^ 2
+..<interactive>:21:1: Not in scope:
+```
+is equivalent to like scala's
+```
+def bmi(<?>: of Floating, <?>: of Floating): <?> = {
+  ? / ? ^ 2
+}
+def bmiImpl(weight: Double, height: Double): Double = {
+  weight / height ^ 2
+}
+```
+
+```
+Prelude> let lucky x = show (x + 1)
+Prelude> :t lucky
+lucky :: (Num a, Show a) => a -> String
+Prelude> lucky 1
+"2"
+
+Prelude> let bmi weight height = weight / height ^ 2
+Prelude> bmi 80 2.0
+20.0
+
+Prelude> :show bindings
+x :: Integer = 42
+lucky :: (Num a, Show a) => a -> String = _
+bmi :: Fractional a => a -> a -> a = _
+```
+*Fractional. Not Floating.
+```
+bmi::Fractional(weight::Fractional, height::Fractional) {
+  weight / height ^ 2
+}
+```
