@@ -204,3 +204,108 @@ bmi::Fractional(weight::Fractional, height::Fractional) {
   weight / height ^ 2
 }
 ```
+
+```
+Prelude> :info Num
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+  	-- Defined in ‘GHC.Num’
+instance Num Word -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Double -- Defined in ‘GHC.Float’
+Prelude> :info Floating
+class Fractional a => Floating a where
+  pi :: a
+  exp :: a -> a
+  log :: a -> a
+  sqrt :: a -> a
+  (**) :: a -> a -> a
+  logBase :: a -> a -> a
+  sin :: a -> a
+  cos :: a -> a
+  tan :: a -> a
+  asin :: a -> a
+  acos :: a -> a
+  atan :: a -> a
+  sinh :: a -> a
+  cosh :: a -> a
+  tanh :: a -> a
+  asinh :: a -> a
+  acosh :: a -> a
+  atanh :: a -> a
+  	-- Defined in ‘GHC.Float’
+instance Floating Float -- Defined in ‘GHC.Float’
+instance Floating Double -- Defined in ‘GHC.Float’
+```
+
+
+Combine. g○f
+------------
+http://tune.hateblo.jp/entry/2015/01/22/023102
+
+Arrow = Mor(X, Y)
+![MorphismComposition](https://upload.wikimedia.org/wikipedia/commons/1/1a/MorphismComposition-01.png)
+
+```
+ {x ∈ X | Q(x)}
+```
+is equivalen to
+```
+ {x | x ∈ X AND Q(x)}
+```
+of
+```
+  x:: x ∈ X AND Q(x)
+```
+*Q(x).. conditional expression on x
+*x:group, X:Group
+
+```
+1 xor 1 = 0
+1 xor 0 = 1
+0 xor 1 = 1
+0 xor 0 = 0
+```
+array of digits
+```
+1100 ^ 1010 = 0110
+```
+
+http://www.is.s.u-tokyo.ac.jp/isnavi/logic06.html
+
+![g○f](http://www.is.s.u-tokyo.ac.jp/isnavi/images/logic/picture04.gif)
+（h○κ1=f、h○κ2=g）
+![](http://www.is.s.u-tokyo.ac.jp/isnavi/images/logic/picture05.gif)
+*e.g. Labels = [1,2]
+
+```
+Prelude> :info IO
+newtype IO a
+  = GHC.Types.IO (GHC.Prim.State# GHC.Prim.RealWorld
+                  -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #))
+  	-- Defined in ‘GHC.Types’
+instance Monad IO -- Defined in ‘GHC.Base’
+instance Functor IO -- Defined in ‘GHC.Base’
+instance Applicative IO -- Defined in ‘GHC.Base’
+
+Prelude> :i Monad
+class Applicative m => Monad (m :: * -> *) where
+  (>>=) :: m a -> (a -> m b) -> m b
+  (>>) :: m a -> m b -> m b
+  return :: a -> m a
+  fail :: String -> m a
+  	-- Defined in ‘GHC.Base’
+instance Monad (Either e) -- Defined in ‘Data.Either’
+instance Monad [] -- Defined in ‘GHC.Base’
+instance Monad Maybe -- Defined in ‘GHC.Base’
+instance Monad IO -- Defined in ‘GHC.Base’
+instance Monad ((->) r) -- Defined in ‘GHC.Base’
+```
