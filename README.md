@@ -282,8 +282,11 @@ array of digits
 http://www.is.s.u-tokyo.ac.jp/isnavi/logic06.html
 
 ![g○f](http://www.is.s.u-tokyo.ac.jp/isnavi/images/logic/picture04.gif)
+
 （h○κ1=f、h○κ2=g）
+
 ![](http://www.is.s.u-tokyo.ac.jp/isnavi/images/logic/picture05.gif)
+
 *e.g. Labels = [1,2]
 
 ```
